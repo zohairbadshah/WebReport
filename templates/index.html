@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Report Viewer</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, input[type="file"], input[type="submit"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #444;
+            color: black;
+        }
+
+        input[type="file"] {
+            background-color: transparent;
+            border: none;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: #337ab7;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #286090;
+        }
+
+        select {
+            background-color: transparent;
+        }
+
+        input[type="submit"] {
+            background-color: #337ab7;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #286090;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Upload an Excel File</h1>
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+            <label for="file">Choose an Excel file:</label>
+            <input type="file" name="file" accept=".xlsx, .xls">
+            <br><br>
+            <label for="report_type">Select Report Type:</label>
+            <select name="report_type" id="report_type">
+                <option value="overall">Overall Report</option>
+                <option value="daily">Daily Report</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

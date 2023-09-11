@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overall Report Table</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: black; /* Dark background color */
+            color: white; /* White text color */
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 auto; /* Center the table horizontally */
+            text-align: left;
+        }
+
+        th, td {
+            border: 1px solid #555; /* Darker border color */
+            padding: 8px;
+        }
+
+        th {
+            background-color: #444; /* Darker background color */
+        }
+
+        h1 {
+            text-align: center; /* Center the heading */
+        }
+
+        form {
+            text-align: center; /* Center the form */
+            margin-top: 20px; /* Add some spacing between the form and table */
+        }
+
+        button {
+            margin-top: 10px; /* Add some spacing between the button and the form */
+            background-color: #337ab7; /* Button background color */
+            color: white; /* Button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #286090; /* Button background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Overall Report</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% for key, value in data[0].items() %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    {% for key, value in row.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form method="post" action="{{ url_for('download_excel') }}">
+        <input type="hidden" name="report_type" value="overall">
+        <button type="submit">Download Excel</button>
+    </form>
+</body>
+</html>
